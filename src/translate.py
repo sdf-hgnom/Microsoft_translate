@@ -9,13 +9,11 @@ parcer.add_argument('data', type=str, nargs='+', help='Text to translate (you ca
 parcer.add_argument('--fl', type=str, default='ru', help='From Language')
 parcer.add_argument('--tl', type=str, default='en', help='To Language')
 args = parcer.parse_args()
-print(args)
 key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
 if key_var_name in os.environ:
     subscription_key = os.environ[key_var_name]
 else:
     raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
-print(subscription_key)
 endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
 if endpoint_var_name in os.environ:
     endpoint = os.environ[endpoint_var_name]
@@ -41,4 +39,4 @@ response = request.json()
 for item in response:
     translate = item['translations']
     mess = translate[0]['text']
-    print(type(mess), mess)
+    print(mess)
